@@ -1,14 +1,15 @@
 package com.example.pars.uni_prj;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     public static ApiInterface apiInterface;
-    TextView loginText;
+    Button start;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,16 +17,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         apiInterface = API.getAPI().create(ApiInterface.class);
+        start = findViewById(R.id.login_start);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.frg_container, new Register()).commit();
-
-        loginText = findViewById(R.id.login_txt_home);
-
-        loginText.setOnClickListener(new View.OnClickListener() {
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frg_container, new Login()).commit();
-                loginText.setText("");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frg_container, new Login()).commit();
+
+                start.setVisibility(View.GONE);
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frg_container, new Register()).commit();
             }
         });
     }

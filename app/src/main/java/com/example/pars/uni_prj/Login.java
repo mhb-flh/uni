@@ -4,12 +4,13 @@
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.support.design.widget.TextInputLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ import retrofit2.Response;
 
 public class Login extends Fragment {
 
-    EditText loginUser, loginPassword,loginEmail;
+    TextInputLayout loginUser, loginPassword,loginEmail;
     Button loginBtn;
     TextView welcomeText;
 
@@ -61,9 +62,9 @@ public class Login extends Fragment {
 
     public void loginAction() {
 
-        String logUser = loginUser.getText().toString();
-        String logEmail = loginEmail.getText().toString();
-        String logPassword = loginPassword.getText().toString();
+        String logUser = loginUser.getEditText().toString();
+        String logEmail = loginEmail.getEditText().toString();
+        String logPassword = loginPassword.getEditText().toString();
 
         Call<User> logCall = MainActivity.apiInterface.loginCall(logUser,logEmail, logPassword);
 
@@ -75,7 +76,7 @@ public class Login extends Fragment {
                     Toast.makeText(getActivity(), "You login successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getActivity(), firstPage.class);
                     startActivity(i);
-                    (getActivity()).overridePendingTransition(0, 0);
+
 
                 }
                 else if (response.body().getApiResposnse().equals("FAILED")) {
