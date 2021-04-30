@@ -2,12 +2,12 @@ package com.example.pars.uni_prj;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class Register extends Fragment {
 
-    EditText regName, regUsername,regEmail ,regPassword;
+    TextInputLayout regName, regUsername, regEmail, regPassword;
     Button regBtn;
     TextView goToLogin;
 
@@ -34,10 +34,10 @@ public class Register extends Fragment {
 
         regName = regView.findViewById(R.id.reg_name);
         regUsername = regView.findViewById(R.id.reg_username);
-        regEmail=regView.findViewById(R.id.reg_email);
+        regEmail = regView.findViewById(R.id.reg_email);
         regPassword = regView.findViewById(R.id.reg_password);
         regBtn = regView.findViewById(R.id.register_btn);
-        goToLogin=regView.findViewById(R.id.goToLogin);
+        goToLogin = regView.findViewById(R.id.goToLogin);
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,11 +59,11 @@ public class Register extends Fragment {
 
     public void registerAction() {
 
-        String rName = regName.getText().toString();
-        String rUsername = regUsername.getText().toString();
-        String rPassword = regPassword.getText().toString();
-        String rEmail=regEmail.getText().toString();
-        Call<User> rCall = MainActivity.apiInterface.regCall(rName, rUsername,rEmail, rPassword);
+        String rName = regName.getEditText().toString();
+        String rUsername = regUsername.getEditText().toString();
+        String rPassword = regPassword.getEditText().toString();
+        String rEmail = regEmail.getEditText().toString();
+        Call<User> rCall = MainActivity.apiInterface.regCall(rName, rUsername, rEmail, rPassword);
 
         rCall.enqueue(new Callback<User>() {
             @Override
@@ -108,10 +108,10 @@ public class Register extends Fragment {
             }
         });
 
-        regName.setText("");
-        regUsername.setText("");
-        regEmail.setText("");
-        regPassword.setText("");
+//        regName.settext("");
+//        regUsername.setText("");
+//        regEmail.setText("");
+//        regPassword.setText("");
 
     }
 
