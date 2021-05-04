@@ -59,10 +59,10 @@ public class Register extends Fragment {
 
     public void registerAction() {
 
-        String rName = regName.getEditText().toString();
-        String rUsername = regUsername.getEditText().toString();
-        String rPassword = regPassword.getEditText().toString();
-        String rEmail = regEmail.getEditText().toString();
+        String rName = regName.getEditText().getText().toString().trim();
+        String rUsername = regUsername.getEditText().getText().toString().trim();
+        String rPassword = regPassword.getEditText().getText().toString().trim();
+        String rEmail = regEmail.getEditText().getText().toString().trim();
         Call<User> rCall = MainActivity.apiInterface.regCall(rName, rUsername, rEmail, rPassword);
 
         rCall.enqueue(new Callback<User>() {

@@ -62,9 +62,9 @@ public class Login extends Fragment {
 
     public void loginAction() {
 
-        String logUser = loginUser.getEditText().toString();
-        String logEmail = loginEmail.getEditText().toString();
-        String logPassword = loginPassword.getEditText().toString();
+        String logUser = loginUser.getEditText().getText().toString().trim();
+        String logEmail = loginEmail.getEditText().getText().toString().trim();
+        String logPassword = loginPassword.getEditText().getText().toString().trim();
 
         Call<User> logCall = MainActivity.apiInterface.loginCall(logUser,logEmail, logPassword);
 
@@ -76,10 +76,8 @@ public class Login extends Fragment {
                     Toast.makeText(getActivity(), "You login successfully!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getActivity(), firstPage.class);
                     startActivity(i);
-
-
-                }
-                else if (response.body().getApiResposnse().equals("FAILED")) {
+                    }
+                    else if (response.body().getApiResposnse().equals("FAILED")) {
                     Toast.makeText(getActivity(), "Login failed!", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity(), "Username or Password incorrect. please try again", Toast.LENGTH_SHORT).show();
                 }
