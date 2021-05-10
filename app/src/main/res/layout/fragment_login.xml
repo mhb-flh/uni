@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".Login">
+    tools:context=".main.Login">
 
 
     <ImageView

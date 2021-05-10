@@ -1,10 +1,8 @@
- package com.example.pars.uni_prj;
+ package com.example.pars.uni_prj.main;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,9 @@ import android.widget.Button;
 import android.support.design.widget.TextInputLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pars.uni_prj.R;
+import com.example.pars.uni_prj.data.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;

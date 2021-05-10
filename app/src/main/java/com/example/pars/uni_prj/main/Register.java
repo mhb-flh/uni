@@ -1,4 +1,4 @@
-package com.example.pars.uni_prj;
+package com.example.pars.uni_prj.main;
 
 
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pars.uni_prj.R;
+import com.example.pars.uni_prj.data.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
