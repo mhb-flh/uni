@@ -1,6 +1,7 @@
 package com.example.pars.uni_prj.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.User;
+import com.example.pars.uni_prj.data.loginPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +25,7 @@ public class Register extends Fragment {
     TextInputLayout regName, regUsername, regEmail, regPassword;
     Button regBtn;
     TextView goToLogin;
+    loginPrefManager prefManager;
 
     public Register() {
         // Required empty public constructor
@@ -41,6 +44,7 @@ public class Register extends Fragment {
         regPassword = regView.findViewById(R.id.reg_password);
         regBtn = regView.findViewById(R.id.register_btn);
         goToLogin = regView.findViewById(R.id.goToLogin);
+        prefManager = new loginPrefManager(getContext());
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +80,11 @@ public class Register extends Fragment {
                 switch (response.body().getApiResposnse()) {
                     case "SUCCESS":
                         Toast.makeText(getContext(), "You registered successfully!", Toast.LENGTH_SHORT).show();
+                        prefManager.setLogin(true);
+                        Intent i = new Intent(getActivity(), firstPage.class);
+                        startActivity(i);
+                        getActivity().finish();
+
                         break;
                     case "REGISTERED":
                         Toast.makeText(getActivity(), "You registered already!", Toast.LENGTH_SHORT).show();
@@ -85,20 +94,6 @@ public class Register extends Fragment {
                         break;
                 }
 
-
-
-                /*  if Statement:
-
-                        if (response.body().getApiResposnse().equals("SUCCESS")) {
-                        Toast.makeText(getActivity(), "You registered successfully!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (response.body().getApiResposnse().equals("REGISTERED")) {
-                        Toast.makeText(getActivity(), "You registered already!", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (response.body().getApiResposnse().equals("ERROR")) {
-                        Toast.makeText(getActivity(), "A problem occurred...", Toast.LENGTH_SHORT).show();
-                }
-                 */
 
             }
 
@@ -111,10 +106,10 @@ public class Register extends Fragment {
             }
         });
 
-//        regName.settext("");
-//        regUsername.setText("");
-//        regEmail.setText("");
-//        regPassword.setText("");
+        regName.getEditText().getText().clear();
+        regUsername.getEditText().getText().clear();
+        regEmail.getEditText().getText().clear();
+        regPassword.getEditText().getText().clear();
 
     }
 

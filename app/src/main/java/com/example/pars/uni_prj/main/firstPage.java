@@ -1,6 +1,7 @@
 package com.example.pars.uni_prj.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.MainViewModel;
 import com.example.pars.uni_prj.data.items;
 import com.example.pars.uni_prj.data.listAdapter;
+import com.example.pars.uni_prj.data.loginPrefManager;
 import com.example.pars.uni_prj.http.ApiServiceSingleton;
 
 import java.util.List;
@@ -36,7 +38,16 @@ public class firstPage extends AppCompatActivity {
         setContentView(R.layout.activity_first_page);
 //        recycler=findViewById(R.id.recycler);
 //        prepareData();
-//        showSata();
+//        showData();
+
+//        loginPrefManager prefManager=new loginPrefManager(this);
+//
+//        if (!prefManager.isLoggedIn()){
+//            Intent i = new Intent(this, MainActivity.class);
+//            startActivity(i);
+//            finish();
+//        }
+
 
         MainViewModel mainViewModel = new MainViewModel(ApiServiceSingleton.getInstance());
         mainViewModel.getProduct().subscribeOn(Schedulers.newThread())
@@ -51,7 +62,7 @@ public class firstPage extends AppCompatActivity {
                     public void onSuccess(List<items> myItems) {
                         Log.i(TAG, "onSuccess: " + myItems);
                         recycler = findViewById(R.id.recycler);
-                        recycler.setLayoutManager(new LinearLayoutManager(firstPage.this, LinearLayoutManager.VERTICAL, false));
+                        recycler.setLayoutManager(new LinearLayoutManager(firstPage.this, LinearLayoutManager.HORIZONTAL, false));
                         myAdapter = new listAdapter(myItems, firstPage.this);
                         recycler.setAdapter(myAdapter);
                     }
@@ -66,7 +77,7 @@ public class firstPage extends AppCompatActivity {
 }
 
 
-//    private void showSata() {
+//    private void showData() {
 //        myAdapter=new listAdapter(myItems);
 //        recycler.setAdapter(myAdapter);
 //        recycler.setLayoutManager(new LinearLayoutManager(this));
