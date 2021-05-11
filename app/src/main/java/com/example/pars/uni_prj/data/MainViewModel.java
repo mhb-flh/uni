@@ -1,7 +1,9 @@
 package com.example.pars.uni_prj.data;
 
 import com.example.pars.uni_prj.http.ApiService;
+
 import java.util.List;
+
 import io.reactivex.Single;
 
 public class MainViewModel {

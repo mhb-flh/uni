@@ -92,13 +92,14 @@
                     android:id="@+id/login_btn"
                     android:layout_marginTop="5dp"/>
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:id="@+id/wlc_txt"
                     android:text="@string/login_reg_msg"
                     android:textAlignment="center"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="5dp"/>
 
 
             </LinearLayout>

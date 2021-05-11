@@ -3,12 +3,12 @@ package com.example.pars.uni_prj.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.support.design.widget.TextInputLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +24,7 @@ import retrofit2.Response;
 public class Login extends Fragment {
 
     TextInputLayout loginUser, loginPassword, loginEmail;
-    Button loginBtn;
-    TextView welcomeText;
+    Button loginBtn,welcomeText;
     loginPrefManager prefManager;
 
     public Login() {
@@ -107,7 +106,6 @@ public class Login extends Fragment {
         loginEmail.getEditText().getText().clear();
         loginPassword.getEditText().getText().clear();
         loginUser.getEditText().getText().clear();
-
 
 
     }

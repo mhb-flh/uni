@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.MainViewModel;
 import com.example.pars.uni_prj.data.items;
 import com.example.pars.uni_prj.data.listAdapter;
-import com.example.pars.uni_prj.data.loginPrefManager;
 import com.example.pars.uni_prj.http.ApiServiceSingleton;
 
 import java.util.List;
@@ -36,6 +36,7 @@ public class firstPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
+        myAdapter=new listAdapter(myItems,context);
 //        recycler=findViewById(R.id.recycler);
 //        prepareData();
 //        showData();
@@ -47,6 +48,22 @@ public class firstPage extends AppCompatActivity {
 //            startActivity(i);
 //            finish();
 //        }
+
+
+
+        //onClick Recycler
+        myAdapter.setOnItemClickListener(new listAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Log.d(TAG, "onItemClick position: " + position);
+                startActivity(new Intent(firstPage.this,buy.class));
+            }
+
+            @Override
+            public void onItemLongClick(int position, View v) {
+                Log.d(TAG, "onItemLongClick pos = " + position);
+            }
+        });
 
 
         MainViewModel mainViewModel = new MainViewModel(ApiServiceSingleton.getInstance());

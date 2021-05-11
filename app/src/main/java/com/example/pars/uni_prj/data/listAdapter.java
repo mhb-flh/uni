@@ -8,13 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.pars.uni_prj.R;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> {
 
+    private static ClickListener clickListener;
     private List<items> items;
     Context context;
 
@@ -28,6 +31,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_items, parent, false);
+
         return new myViewHolder(itemview);
     }
 
@@ -42,7 +46,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
         return items.size();
     }
 
-    public class myViewHolder extends RecyclerView.ViewHolder {
+    public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         public ImageView img;
         public TextView title;
@@ -50,7 +54,8 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.irecycler_img);
             title = itemView.findViewById(R.id.title);
             price = itemView.findViewById(R.id.price);
@@ -63,5 +68,24 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
             price.setText(items.getPrice());
         }
 
+        @Override
+        public void onClick(View v) {
+            clickListener.onItemClick(getAdapterPosition(), v);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            clickListener.onItemLongClick(getAdapterPosition(), v);
+            return false;
+        }
     }
-}
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        listAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
+        void onItemLongClick(int position, View v);
+    }
+    }

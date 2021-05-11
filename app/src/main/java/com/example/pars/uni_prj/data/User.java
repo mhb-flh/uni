@@ -1,4 +1,4 @@
- package com.example.pars.uni_prj.data;
+package com.example.pars.uni_prj.data;
 
 import com.google.gson.annotations.SerializedName;
 

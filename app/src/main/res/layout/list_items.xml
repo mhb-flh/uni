@@ -3,50 +3,58 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="150dp"
-    android:layout_width="150dp"
-    android:layout_row="2">
+    android:layout_height="260dp"
+    android:layout_width="200dp"
+    android:layout_gravity="center"
+    android:background="#fcb7b7">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
 <android.support.v7.widget.CardView
-
-    android:layout_width="160dp"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_height="240dp"
+    android:layout_width="190dp"
+    android:padding="5dp"
+    android:layout_gravity="center"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp">
 
 
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="185dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:weightSum="100">
 
 
     <ImageView
         android:id="@+id/irecycler_img"
-        android:padding="10dp"
-        android:layout_margin="5dp"
+        android:padding="2dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="108dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_weight="75"/>
 
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="name of product"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_weight="10"/>
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="price"
+            android:layout_weight="15"
             android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
 </android.support.v7.widget.CardView>
-</LinearLayout>
+
 </LinearLayout>
