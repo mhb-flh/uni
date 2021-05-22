@@ -17,12 +17,13 @@ import java.util.List;
 
 public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> {
 
+
     private static ClickListener clickListener;
-    private List<items> items;
+    private List<Items> items;
     Context context;
 
-    public listAdapter(List<items> items, Context context) {
-        this.items = (items == null) ? new ArrayList<>() : items;
+    public listAdapter(List<Items> Items, Context context) {
+        this.items = (Items == null) ? new ArrayList<>() : Items;
         this.context = context;
     }
 
@@ -30,9 +31,9 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_items, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_items, parent, false);
 
-        return new myViewHolder(itemview);
+        return new myViewHolder(itemView);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
 
     public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-        public ImageView img;
+        ImageView img;
         public TextView title;
         public TextView price;
 
@@ -56,13 +57,14 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            img = itemView.findViewById(R.id.irecycler_img);
+            img = itemView.findViewById(R.id.recycler_img);
             title = itemView.findViewById(R.id.title);
             price = itemView.findViewById(R.id.price);
 
         }
 
-        public void Bind(items items) {
+        public void Bind(Items items) {
+           // PicassoClient.downloadImage(context,items.getImage(),img);
             Picasso.get().load(items.getImage()).into(img);
             title.setText(items.getTitle());
             price.setText(items.getPrice());

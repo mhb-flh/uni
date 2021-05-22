@@ -11,5 +11,7 @@ public class buy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.buy_container,new orders()).commit();
     }
 }

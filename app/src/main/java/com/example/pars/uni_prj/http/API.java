@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class API {
 
-    public static final String BASE_URL = "http://192.168.1.3/uni/";
+    public static final String BASE_URL = "http://192.168.1.5/uni/";
     public static Retrofit myRetrofit = null;
 
     public static Retrofit getAPI() {

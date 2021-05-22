@@ -27,7 +27,7 @@
 
 
     <ImageView
-        android:id="@+id/irecycler_img"
+        android:id="@+id/recycler_img"
         android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

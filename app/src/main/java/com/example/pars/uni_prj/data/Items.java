@@ -1,11 +1,11 @@
 package com.example.pars.uni_prj.data;
 
-public class items {
+public class Items {
 
+    private String image;
     private int id;
     private String title;
     private String price;
-    private String image;
 
     public int getId() {
         return id;
@@ -31,7 +31,7 @@ public class items {
         this.price = price;
     }
 
-    public String getImage() {
+    public  String getImage() {
         return image;
     }
 

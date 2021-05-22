@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.firstPage" />
-        <activity android:name=".main.buy"></activity>
+        <activity android:name=".main.buy"/>
     </application>
 
 </manifest>
