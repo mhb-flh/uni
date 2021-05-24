@@ -1,6 +1,7 @@
 package com.example.pars.uni_prj.data;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pars.uni_prj.R;
+import com.example.pars.uni_prj.main.buy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -40,6 +42,26 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int position) {
         myViewHolder.Bind(items.get(position));
 
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //pass data to another activity
+                int id = items.get(position).getId(); // get Id
+                String img=items.get(position).getImage();
+                String imageName =items.get(position).getTitle();
+                String price=items.get(position).getPrice();
+                Intent intent = new Intent(context, buy.class);
+                intent.putExtra("pos", id); // Pass Id
+                intent.putExtra("img", img);
+                intent.putExtra("imageName", imageName);
+                intent.putExtra("price", price);
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -64,7 +86,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
         }
 
         public void Bind(Items items) {
-           // PicassoClient.downloadImage(context,items.getImage(),img);
+            // PicassoClient.downloadImage(context,items.getImage(),img);
             Picasso.get().load(items.getImage()).into(img);
             title.setText(items.getTitle());
             price.setText(items.getPrice());
@@ -73,6 +95,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
         @Override
         public void onClick(View v) {
             clickListener.onItemClick(getAdapterPosition(), v);
+
         }
 
         @Override
@@ -88,6 +111,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
 
     public interface ClickListener {
         void onItemClick(int position, View v);
+
         void onItemLongClick(int position, View v);
     }
-    }
+}

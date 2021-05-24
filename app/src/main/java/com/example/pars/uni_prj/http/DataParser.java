@@ -9,20 +9,21 @@ import android.widget.Toast;
 
 import com.example.pars.uni_prj.data.Items;
 import com.example.pars.uni_prj.data.listAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DataParser extends AsyncTask<Void,Void,Integer> {
+public class DataParser extends AsyncTask<Void, Void, Integer> {
 
     private Context c;
     private String jsonData;
     private RecyclerView recyclerView;
 
     ProgressDialog pd;
-    ArrayList<Items> items =new ArrayList<>();
+    ArrayList<Items> items = new ArrayList<>();
 
     public DataParser(Context c, String jsonData, RecyclerView recyclerView) {
         this.c = c;
@@ -51,36 +52,32 @@ public class DataParser extends AsyncTask<Void,Void,Integer> {
 
 //        pd.dismiss();
 
-        if(result==0)
-        {
-            Toast.makeText(c,"Unable To Parse",Toast.LENGTH_SHORT).show();
-        }else {
+        if (result == 0) {
+            Toast.makeText(c, "Unable To Parse", Toast.LENGTH_SHORT).show();
+        } else {
             //BIND DATA TO RECYCLER
-            listAdapter adapter=new listAdapter(items,c);
+            listAdapter adapter = new listAdapter(items, c);
             recyclerView.setAdapter(adapter);
         }
     }
 
-    private int parseData()
-    {
-        try
-        {
-            JSONArray ja=new JSONArray(jsonData);
-            JSONObject jo=null;
+    private int parseData() {
+        try {
+            JSONArray ja = new JSONArray(jsonData);
+            JSONObject jo = null;
 
             this.items.clear();
             Items item;
 
-            for(int i=0;i<ja.length();i++)
-            {
-                jo=ja.getJSONObject(i);
+            for (int i = 0; i < ja.length(); i++) {
+                jo = ja.getJSONObject(i);
 
-                int id=jo.getInt("id");
-                String name=jo.getString("imageName");
-                String image=jo.getString("image");
-                String price=jo.getString("price");
+                int id = jo.getInt("id");
+                String name = jo.getString("imageName");
+                String image = jo.getString("image");
+                String price = jo.getString("price");
 
-                item =new Items();
+                item = new Items();
 
                 item.setId(id);
                 item.setTitle(name);

@@ -10,14 +10,22 @@
     android:layout_gravity="center"
     android:gravity="center">
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="380dp"
+        android:id="@+id/img"
+        android:layout_margin="10dp"/>
+
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:rowCount="5"
         android:columnCount="2"
-        android:padding="10dp"
+        android:padding="15dp"
         android:useDefaultMargins="true"
         android:layout_gravity="center">
+
+
 
         <TextView
 
@@ -74,6 +82,7 @@
     </GridLayout>
 
     <Button
+        android:id="@+id/buy_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="buy"
