@@ -1,7 +1,6 @@
 package com.example.pars.uni_prj.http;
 
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
@@ -16,13 +15,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DataParser extends AsyncTask<Void, Void, Integer> {
+class DataParser extends AsyncTask<Void, Void, Integer> {
 
-    private Context c;
+    private final Context c;
     private String jsonData;
     private RecyclerView recyclerView;
 
-    ProgressDialog pd;
     ArrayList<Items> items = new ArrayList<>();
 
     public DataParser(Context c, String jsonData, RecyclerView recyclerView) {
@@ -34,11 +32,7 @@ public class DataParser extends AsyncTask<Void, Void, Integer> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-//
-//        pd=new ProgressDialog(c);
-//        pd.setTitle("Parse");
-//        pd.setMessage("Parsing...Please wait");
-//        pd.show();
+
     }
 
     @Override
@@ -64,7 +58,7 @@ public class DataParser extends AsyncTask<Void, Void, Integer> {
     private int parseData() {
         try {
             JSONArray ja = new JSONArray(jsonData);
-            JSONObject jo = null;
+            JSONObject jo;
 
             this.items.clear();
             Items item;
@@ -77,6 +71,7 @@ public class DataParser extends AsyncTask<Void, Void, Integer> {
                 String image = jo.getString("image");
                 String price = jo.getString("price");
 
+
                 item = new Items();
 
                 item.setId(id);
@@ -85,7 +80,9 @@ public class DataParser extends AsyncTask<Void, Void, Integer> {
                 item.setPrice(price);
 
                 items.add(item);
+
             }
+
 
             return 1;
 

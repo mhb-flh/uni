@@ -3,18 +3,20 @@ package com.example.pars.uni_prj.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.User;
 import com.example.pars.uni_prj.data.loginPrefManager;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +25,9 @@ import retrofit2.Response;
 
 public class Login extends Fragment {
 
-    TextInputLayout loginUser, loginPassword, loginEmail;
+    private TextInputLayout loginUser;
+    TextInputLayout loginPassword;
+    TextInputLayout loginEmail;
     Button loginBtn,welcomeText;
     loginPrefManager prefManager;
 
@@ -33,7 +37,7 @@ public class Login extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View loginView = inflater.inflate(R.layout.fragment_login, container, false);
@@ -49,7 +53,7 @@ public class Login extends Fragment {
         welcomeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frg_container, new Register()).commit();
+                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.frg_container, new Register()).commit();
             }
         });
 
@@ -67,9 +71,9 @@ public class Login extends Fragment {
 
     public void loginAction() {
 
-        String logUser = loginUser.getEditText().getText().toString().trim();
-        String logEmail = loginEmail.getEditText().getText().toString().trim();
-        String logPassword = loginPassword.getEditText().getText().toString().trim();
+        String logUser = Objects.requireNonNull(loginUser.getEditText()).getText().toString().trim();
+        String logEmail = Objects.requireNonNull(loginEmail.getEditText()).getText().toString().trim();
+        String logPassword = Objects.requireNonNull(loginPassword.getEditText()).getText().toString().trim();
 
         Call<User> logCall = MainActivity.apiInterface.loginCall(logUser, logEmail, logPassword);
 
@@ -77,13 +81,13 @@ public class Login extends Fragment {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
 
-                if (response.body().getApiResposnse().equals("SUCCESS")) {
+                if (Objects.requireNonNull(response.body()).getApiResposnse().equals("SUCCESS")) {
                     Toast.makeText(getActivity(), "You login successfully!", Toast.LENGTH_SHORT).show();
 //                    if (prefManager.isLoggedIn()){
                     prefManager.setLogin(true);
                     Intent i = new Intent(getActivity(), firstPage.class);
                     startActivity(i);
-                    getActivity().finish();
+                    Objects.requireNonNull(getActivity()).finish();
 
 //                    }
 
@@ -98,7 +102,7 @@ public class Login extends Fragment {
             public void onFailure(Call<User> call, Throwable t) {
 
                 String loginError = "Connection Error!";
-                Toast.makeText(getActivity(), loginError + t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), loginError + t, Toast.LENGTH_SHORT).show();
 
             }
         });

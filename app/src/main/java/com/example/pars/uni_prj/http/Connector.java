@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Connector {
+class Connector {
 
     public static HttpURLConnection connect(String urlAddress) {
         try {

@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 
 public class Downloader extends AsyncTask<Void, Void, String> {
 
-    Context c;
+    private final Context c;
     String urlAddress;
     RecyclerView lv;
 
@@ -75,7 +75,7 @@ public class Downloader extends AsyncTask<Void, Void, String> {
             StringBuffer jsonData = new StringBuffer();
 
             while ((line = br.readLine()) != null) {
-                jsonData.append(line + "\n");
+                jsonData.append(line).append("\n");
             }
 
             br.close();

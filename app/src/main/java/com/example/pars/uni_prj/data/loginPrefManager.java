@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class loginPrefManager {
 
 
-    SharedPreferences pref;
+    private final SharedPreferences pref;
     Context context;
     SharedPreferences.Editor editor;
 
@@ -24,7 +24,7 @@ public class loginPrefManager {
     // Constructor
     public loginPrefManager(Context context) {
         this.context = context;
-        pref = context.getSharedPreferences(PREF_NAME, context.MODE_PRIVATE);
+        pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = pref.edit();
     }
 
@@ -113,23 +113,4 @@ public class loginPrefManager {
 
 }
 
-
-//    private Context context;
-//    private SharedPreferences pref;
-//    public static final String PREF_NAME="login_pref";
-//    public static final String PREF_KEY="show_login";
-//
-//    public loginPrefManager(Context context) {
-//        this.context = context;
-//        pref=context.getSharedPreferences(PREF_NAME,context.MODE_PRIVATE);
-//    }
-//
-//    public boolean show_login(){
-//            return pref.getBoolean(PREF_KEY,true);
-//    }
-//
-//    public void setLogin(Boolean start){
-//        pref.edit().putBoolean(PREF_KEY,start).apply();
-//    }
-//
 

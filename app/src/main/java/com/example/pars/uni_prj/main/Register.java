@@ -3,6 +3,7 @@ package com.example.pars.uni_prj.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,13 +17,18 @@ import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.User;
 import com.example.pars.uni_prj.data.loginPrefManager;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Register extends Fragment {
 
-    TextInputLayout regName, regUsername, regEmail, regPassword;
+    private TextInputLayout regName;
+    TextInputLayout regUsername;
+    TextInputLayout regEmail;
+    TextInputLayout regPassword;
     Button regBtn;
     TextView goToLogin;
     loginPrefManager prefManager;
@@ -33,7 +39,7 @@ public class Register extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View regView = inflater.inflate(R.layout.fragment_register, container, false);

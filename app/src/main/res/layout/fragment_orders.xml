@@ -88,6 +88,8 @@
         android:text="buy"
         android:layout_margin="10dp"
         android:padding="16dp"
+        android:background="#fdb7b7"
+
         />
 
 
