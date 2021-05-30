@@ -12,6 +12,11 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.pars.uni_prj.R;
+import com.example.pars.uni_prj.data.Items;
+import com.example.pars.uni_prj.data.listAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class searchFragment extends Fragment {
@@ -19,6 +24,8 @@ public class searchFragment extends Fragment {
 
     private RecyclerView search_recycler;
     SearchView searchView;
+    listAdapter myAdapter;
+    final List<Items> myItems = new ArrayList<>();
 
     public searchFragment() {
         // Required empty public constructor
@@ -31,12 +38,13 @@ public class searchFragment extends Fragment {
        View view=inflater.inflate(R.layout.fragment_search, container, false);
         searchView=view.findViewById(R.id.search_view);
         search_recycler=view.findViewById(R.id.search_recycler);
+        myAdapter = new listAdapter(myItems, getActivity());
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-
+                myAdapter.getFilter().filter(s);
                 return false;
             }
 
