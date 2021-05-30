@@ -16,15 +16,19 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".main.MainActivity">
+        <activity
+            android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.firstPage" />
-        <activity android:name=".main.buy"/>
+        <activity android:name=".main.firstPage"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".main.buy"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

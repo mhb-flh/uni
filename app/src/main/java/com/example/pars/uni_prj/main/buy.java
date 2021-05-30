@@ -1,16 +1,10 @@
 package com.example.pars.uni_prj.main;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.pars.uni_prj.R;
-
-import java.util.Objects;
 
 public class buy extends AppCompatActivity {
 
@@ -19,15 +13,19 @@ public class buy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy);
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
-        int value= bundle.getInt("search");
-        if (value==1){
+
+        Bundle bundle = getIntent().getExtras();
+        int value = 0;
+        if (bundle != null) value = bundle.getInt("key");
+        if (value == 1) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.buy_container,new searchFragment()).commit();
+                    .replace(R.id.buy_container, new searchFragment()).commit();
+        } else if (value==2){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.buy_container, new settingFragment()).commit();
         }else {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.buy_container,new orders()).commit();
+                    .replace(R.id.buy_container, new orders()).commit();
         }
 
 

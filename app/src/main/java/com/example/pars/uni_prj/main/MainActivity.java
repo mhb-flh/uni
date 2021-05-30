@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
                 0.5f);
 
-        rotate.setDuration(2500);
+        rotate.setDuration(2000);
         rotate.setRepeatCount(Animation.INFINITE);
         img.setAnimation(rotate);
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         .replace(R.id.frg_container, new Register()).commit();
             }
 //TODO change the time
-        }, 20);
+        }, 2000);
 
 
     }
