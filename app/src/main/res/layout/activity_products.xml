@@ -36,7 +36,7 @@
                 android:padding="10dp"
                 android:text="@string/firstPage_tv"
                 android:textSize="40sp"
-                android:textColor="#930532"
+                android:textColor="@color/primaryDarkColor"
                 android:textStyle="bold"
                 android:fontFamily="serif"
                 android:layout_gravity="center"

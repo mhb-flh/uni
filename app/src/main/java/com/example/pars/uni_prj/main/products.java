@@ -24,11 +24,10 @@ import com.example.pars.uni_prj.http.ApiInterface;
 import com.example.pars.uni_prj.http.Downloader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class firstPage extends AppCompatActivity {
+public class products extends AppCompatActivity {
 
-    private static final String TAG = "firstPage";
+    private static final String TAG = "products";
 
     final List<Items> myItems = new ArrayList<>();
     listAdapter myAdapter;
@@ -46,7 +45,7 @@ public class firstPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_page);
+        setContentView(R.layout.activity_products);
         apiInterface = API.getAPI().create(ApiInterface.class);
 
         productName = findViewById(R.id.title);
@@ -68,15 +67,15 @@ public class firstPage extends AppCompatActivity {
 //        mToolbar =findViewById(R.id.m_toolbar);
 //        setSupportActionBar(mToolbar);
 
-        myAdapter = new listAdapter(myItems, firstPage.this);
+        myAdapter = new listAdapter(myItems, products.this);
 
-        recycler.setLayoutManager(new LinearLayoutManager(firstPage.this, LinearLayoutManager.VERTICAL, false));
+        recycler.setLayoutManager(new LinearLayoutManager(products.this, LinearLayoutManager.VERTICAL, false));
         recycler.setAdapter(myAdapter);
-        new Downloader(firstPage.this, urlAddress, recycler).execute();
+        new Downloader(products.this, urlAddress, recycler).execute();
 
         search.setOnClickListener(view -> {
-            Intent intent = new Intent(firstPage.this, buy.class);
-            intent.putExtra("key", 1);
+            Intent intent = new Intent(products.this, container.class);
+            intent.putExtra("key", "search");
             startActivity(intent);
         });
 
@@ -90,7 +89,8 @@ public class firstPage extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d(TAG, "onItemClick position: " + position);
-                Intent intent = new Intent(firstPage.this, buy.class);
+                Intent intent = new Intent(products.this, container.class);
+                intent.putExtra("key", "order");
                 String img = myItems.get(position).getImage();
                 String imageName = myItems.get(position).getTitle();
                 String price = myItems.get(position).getPrice();
@@ -125,13 +125,13 @@ public class firstPage extends AppCompatActivity {
                     break;
 
                 case R.id.nav_settings:
-                    Intent intent = new Intent(firstPage.this, buy.class);
-                    intent.putExtra("key", 2);
+                    Intent intent = new Intent(products.this, container.class);
+                    intent.putExtra("key", "setting");
                     startActivity(intent);
                     break;
 
                 case R.id.nav_logout:
-                    loginPrefManager loginPrefManager=new loginPrefManager(firstPage.this);
+                    loginPrefManager loginPrefManager=new loginPrefManager(products.this);
 
                     loginPrefManager.logoutUser();
                     break;
