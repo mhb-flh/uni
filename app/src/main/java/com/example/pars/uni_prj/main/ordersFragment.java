@@ -46,6 +46,7 @@ public class orders extends Fragment {
         buy=view.findViewById(R.id.buy_btn);
 
         Intent intent=Objects.requireNonNull(getActivity()).getIntent();
+        String intentValue=intent.getStringExtra("key");
         String Price=  intent.getStringExtra("price");
         String imageName=  intent.getStringExtra("imageName");
         String img2=  intent.getStringExtra("img");

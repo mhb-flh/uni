@@ -17,8 +17,6 @@ import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.User;
 import com.example.pars.uni_prj.data.loginPrefManager;
 
-import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
