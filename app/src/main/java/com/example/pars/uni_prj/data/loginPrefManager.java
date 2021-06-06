@@ -1,29 +1,35 @@
 package com.example.pars.uni_prj.data;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
-import com.example.pars.uni_prj.main.Login;
+import com.example.pars.uni_prj.main.LoginFragment;
 import com.example.pars.uni_prj.main.MainActivity;
+import com.example.pars.uni_prj.main.container;
 
 import java.util.HashMap;
 
-public class loginPrefManager {
+public class loginPrefManager{
 
 
     private final SharedPreferences pref;
     Context context;
+    Activity activity;
     SharedPreferences.Editor editor;
 
     private static final String PREF_NAME = "login_pref";
     private static final String IS_LOGIN = "IsLoggedIn";
-    public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_USER_NAME = "username";
 
     // Constructor
-    public loginPrefManager(Context context) {
+    public loginPrefManager(Context context)  {
         this.context = context;
+
         pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = pref.edit();
     }
@@ -31,10 +37,10 @@ public class loginPrefManager {
     /**
      * Create login session
      */
-    public void createLoginSession(String name, String email) {
+    public void createLoginSession( String username,String email) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_USER_NAME, username);
         editor.putString(KEY_EMAIL, email);
         editor.commit();
     }
@@ -47,7 +53,7 @@ public class loginPrefManager {
     public void checkLogin() {
         // Check login status
         if (!this.isLoggedIn()) {
-            // user is not logged in redirect him to Login Activity
+            // user is not logged in redirect him to LoginFragment Activity
 
             Intent i = new Intent(context, MainActivity.class);
             // Closing all the Activities
@@ -56,7 +62,7 @@ public class loginPrefManager {
             // Add new Flag to start new Activity
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            // Staring Login Activity
+            // Staring LoginFragment Activity
             context.startActivity(i);
         }
 
@@ -67,14 +73,10 @@ public class loginPrefManager {
      * Get stored session data
      */
     public HashMap<String, String> getUserDetails() {
-        HashMap<String, String> user = new HashMap<String, String>();
-        // user name
-        user.put(KEY_NAME, pref.getString(KEY_NAME, null));
+        HashMap<String, String> user = new HashMap<>();
 
-        // user email id
+        user.put(KEY_USER_NAME, pref.getString(KEY_USER_NAME, null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
-
-        // return user
         return user;
     }
 
@@ -86,22 +88,26 @@ public class loginPrefManager {
         editor.clear();
         editor.commit();
 
-        // After logout redirect user to Login Activity
-        Intent i = new Intent(context, Login.class);
+        // After logout redirect user to LoginFragment Activity
+        Intent i = new Intent(context, MainActivity.class);
+
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         // Add new Flag to start new Activity
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        // Staring Login Activity
+        // Staring LoginFragment Activity
         context.startActivity(i);
+
+
+
     }
 
     /**
      * Quick check for login
      **/
-    // Get Login State
+    // Get LoginFragment State
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
     }
