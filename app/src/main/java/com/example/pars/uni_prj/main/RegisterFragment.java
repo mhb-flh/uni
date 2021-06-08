@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Register extends Fragment {
+public class RegisterFragment extends Fragment {
 
     private TextInputLayout regName;
     TextInputLayout regUsername;
@@ -31,7 +31,7 @@ public class Register extends Fragment {
     TextView goToLogin;
     loginPrefManager prefManager;
 
-    public Register() {
+    public RegisterFragment() {
         // Required empty public constructor
     }
 
@@ -53,7 +53,7 @@ public class Register extends Fragment {
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frg_container, new Login()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frg_container, new LoginFragment()).commit();
             }
         });
 
@@ -85,6 +85,7 @@ public class Register extends Fragment {
                     case "SUCCESS":
                         Toast.makeText(getContext(), "You registered successfully!", Toast.LENGTH_SHORT).show();
                         prefManager.setLogin(true);
+                        prefManager.createLoginSession(rUsername,rEmail);
                         Intent i = new Intent(getActivity(), firstPage.class);
                         startActivity(i);
                         getActivity().finish();

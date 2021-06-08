@@ -1,6 +1,5 @@
 package com.example.pars.uni_prj.data;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pars.uni_prj.R;
-import com.example.pars.uni_prj.main.buy;
-import com.example.pars.uni_prj.main.firstPage;
+import com.example.pars.uni_prj.main.container;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,7 +52,7 @@ public class listAdapter extends RecyclerView.Adapter<listAdapter.myViewHolder> 
             String img = items.get(position).getImage();
             String imageName = items.get(position).getTitle();
             String price = items.get(position).getPrice();
-            Intent intent = new Intent(context, buy.class);
+            Intent intent = new Intent(context, container.class);
             intent.putExtra("pos", id); // Pass Id
             intent.putExtra("img", img);
             intent.putExtra("imageName", imageName);

@@ -8,13 +8,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.pars.uni_prj.R;
 import com.example.pars.uni_prj.data.Items;
 import com.example.pars.uni_prj.data.listAdapter;
@@ -28,19 +26,21 @@ import java.util.List;
 public class products extends AppCompatActivity {
 
     private static final String TAG = "products";
+    String INTENT_NAME = "key";
 
+    public ActionBarDrawerToggle actionBarDrawerToggle;
     final List<Items> myItems = new ArrayList<>();
+    public DrawerLayout drawerLayout;
+    public static ApiInterface apiInterface;
+
     listAdapter myAdapter;
     TextView productName, productCost;
-    public static ApiInterface apiInterface;
     ImageView search, shop;
-    Toolbar mToolbar;
-    public DrawerLayout drawerLayout;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
+
 
 
     //TODO change URL
-    final static String urlAddress = "http://192.168.174.1/uni/img.php";
+    final static String urlAddress = "http://192.168.1.4/uni/img.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,48 +62,26 @@ public class products extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-
-//        mToolbar =findViewById(R.id.m_toolbar);
-//        setSupportActionBar(mToolbar);
-
         myAdapter = new listAdapter(myItems, products.this);
 
         recycler.setLayoutManager(new LinearLayoutManager(products.this, LinearLayoutManager.VERTICAL, false));
         recycler.setAdapter(myAdapter);
         new Downloader(products.this, urlAddress, recycler).execute();
 
-        search.setOnClickListener(view -> {
-            Intent intent = new Intent(products.this, container.class);
-            intent.putExtra("key", "search");
-            startActivity(intent);
-        });
-
-        shop.setOnClickListener(view -> {
-            //TODO shopping cart
-        });
-
-
         //onClick Recycler
         myAdapter.setOnItemClickListener(new listAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
                 Log.d(TAG, "onItemClick position: " + position);
-                Intent intent = new Intent(products.this, container.class);
-                intent.putExtra("key", "order");
                 String img = myItems.get(position).getImage();
                 String imageName = myItems.get(position).getTitle();
                 String price = myItems.get(position).getPrice();
+                Intent intent = new Intent(products.this, container.class);
                 intent.putExtra("img", img);
                 intent.putExtra("imageName", imageName);
                 intent.putExtra("price", price);
                 startActivity(intent);
             }
-
-
-
-
-
 
 
             @Override
@@ -112,6 +90,18 @@ public class products extends AppCompatActivity {
             }
         });
 
+
+        search.setOnClickListener(view -> {
+            Intent intent = new Intent(products.this, container.class);
+            intent.putExtra(INTENT_NAME, "search");
+            startActivity(intent);
+        });
+
+        shop.setOnClickListener(view -> {
+            //TODO shopping cart
+        });
+
+
     }
 
 
@@ -119,7 +109,7 @@ public class products extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.nav_account:
 
                     break;
@@ -131,7 +121,7 @@ public class products extends AppCompatActivity {
                     break;
 
                 case R.id.nav_logout:
-                    loginPrefManager loginPrefManager=new loginPrefManager(products.this);
+                    loginPrefManager loginPrefManager = new loginPrefManager(products.this);
 
                     loginPrefManager.logoutUser();
                     break;

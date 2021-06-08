@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity"
     android:id="@+id/frg_container"
-    android:background="@color/colorAccent">
+    android:background="@color/colorPrimary">
 
 
     <ImageView

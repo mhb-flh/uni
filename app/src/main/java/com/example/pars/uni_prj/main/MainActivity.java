@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             } else {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frg_container, new Login()).commit();
+                        .replace(R.id.frg_container, new LoginFragment()).commit();
 
 
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frg_container, new Register()).commit();
+                        .replace(R.id.frg_container, new RegisterFragment()).commit();
             }
 //TODO change the time
         }, 2000);

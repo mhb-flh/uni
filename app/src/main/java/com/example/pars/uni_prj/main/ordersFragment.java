@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class orders extends Fragment {
+public class ordersFragment extends Fragment {
 
     TextView number;
     TextView price;
@@ -29,7 +30,7 @@ public class orders extends Fragment {
     Button buy;
 
 
-    public orders() {
+    public ordersFragment() {
         // Required empty public constructor
     }
 
@@ -46,13 +47,16 @@ public class orders extends Fragment {
         buy=view.findViewById(R.id.buy_btn);
 
         Intent intent=Objects.requireNonNull(getActivity()).getIntent();
-        String intentValue=intent.getStringExtra("key");
         String Price=  intent.getStringExtra("price");
         String imageName=  intent.getStringExtra("imageName");
         String img2=  intent.getStringExtra("img");
         price.setText(Price);
         name.setText(imageName);
-        Picasso.get().load(img2).into(img);
+        if (img!=null){
+            Log.d("order","img is available");
+            Picasso.get().load(img2).into(img);
+        }
+
 
         buy.setOnClickListener(view1 -> {
             //TODO directed to buying page

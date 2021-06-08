@@ -23,15 +23,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Login extends Fragment {
+public class LoginFragment extends Fragment {
 
     private TextInputLayout loginUser;
     TextInputLayout loginPassword;
     TextInputLayout loginEmail;
-    Button loginBtn,welcomeText;
+    Button loginBtn, welcomeText;
     loginPrefManager prefManager;
 
-    public Login() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -53,7 +53,7 @@ public class Login extends Fragment {
         welcomeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.frg_container, new Register()).commit();
+                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.frg_container, new RegisterFragment()).commit();
             }
         });
 
@@ -85,6 +85,7 @@ public class Login extends Fragment {
                     Toast.makeText(getActivity(), "You login successfully!", Toast.LENGTH_SHORT).show();
 //                    if (prefManager.isLoggedIn()){
                     prefManager.setLogin(true);
+                    prefManager.createLoginSession(logUser,logEmail);
                     Intent i = new Intent(getActivity(), firstPage.class);
                     startActivity(i);
                     Objects.requireNonNull(getActivity()).finish();
@@ -92,7 +93,7 @@ public class Login extends Fragment {
 //                    }
 
                 } else if (response.body().getApiResposnse().equals("FAILED")) {
-                    Toast.makeText(getActivity(), "Login failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "LoginFragment failed!", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity(), "Username or Password incorrect. please try again", Toast.LENGTH_SHORT).show();
                 }
 

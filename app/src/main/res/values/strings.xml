@@ -19,6 +19,23 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
+    <string-array name="grid_menu_items">
+        <item>products</item>
+        <item>profile</item>
+        <item>shopping cart</item>
+        <item>favorites</item>
+        <item> </item>
+        <item>contact us</item>
+        <item>setting</item>
+        <item>comments</item>
+        <item>location</item>
+    </string-array>
+
+
+
+    <string name="map_key" translatable="false">AIzaSyDd5nOQTojh0vx4sJXolPUrYUqYl5hJhvk</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

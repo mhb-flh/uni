@@ -3,25 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".main.firstPage">
 
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="50"
+        android:layout_weight="55"
         android:gravity="center"
-        android:text="@string/firstPage_tv" />
+        android:background="@drawable/bg"/>
 
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_margin="20dp"
-        android:layout_weight="50"
+        android:layout_weight="45"
         android:horizontalSpacing="10dp"
         android:numColumns="3"
         android:verticalSpacing="10dp">

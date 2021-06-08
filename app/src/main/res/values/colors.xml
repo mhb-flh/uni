@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-    <color name="colorPrimary">#ef9a9a</color>
-    <color name="colorPrimaryDark">#ba6b6c</color>
-    <color name="colorPrimaryLight">#ffcccb</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="dot_inactive">#c2b8b8</color>
-    <color name="dot_active">#f2eded</color>
+    <color name="colorPrimary">#ff8a65</color>
+    <color name="colorPrimaryLight">#ffbb93</color>
+    <color name="colorPrimaryDark">#c75b39</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="colorAccent">#ff3d00</color>
 </resources>
