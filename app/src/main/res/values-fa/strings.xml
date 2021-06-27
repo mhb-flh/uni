@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">uni_project</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمز</string>
+    <string name="name">نام</string>
+    <string name="username">نام کاربری</string>
+    <string name="login_reg_msg">هنوز ثبت نام نکرده اید ؟؟</string>
+    <string name="login">ورود</string>
+    <string name="register">ثبت نام</string>
+
+    <string name="firstPage_tv">فروشگاه</string>
+
+    <string name="product_name">نام محصول   </string>
+    <string name="product_number">تعداد  </string>
+    <string name="product_price">قیمت </string>
+
+    <string name="btn_buy">خرید</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+
+    <string name="comment">هیچ نظری ثبت نشده است</string>
+
+    <string name="hint_contact_us">سوال خود را مطرح کنید</string>
+    <string name="btn_contact_us">بفرست </string>
+
+    <string name="favorite">هیچ آیتمی را اضافه نکرده اید</string>
+
+    <string name="location">ما هیچ فروشگاهی در نقشه نداریم ولی میتوانید ما را در اینستاگرام فالو کنید</string>
+
+    <string name="profile_logout">خروج </string>
+
+    <string name="search_hint">جستجو ... </string>
+
+    <string name="setting_lang">زبان :  </string>
+    <string name="setting_theme">تم :  </string>
+
+
+
+    <string-array name="theme">
+        <item>روشن</item>
+        <item>تیره</item>
+    </string-array>
+
+    <string-array name="lang">
+        <item>انگلیسی</item>
+        <item>فارسی</item>
+    </string-array>
+
+
+
+    <string-array name="grid_menu_items">
+        <item>محصولات </item>
+        <item>پروفایل </item>
+        <item>سبد خرید</item>
+        <item>علاقه مندی ها</item>
+        <item> </item>
+        <item>ارتباط با ما</item>
+        <item>تنظیمات</item>
+        <item>نظرات </item>
+        <item>مکان </item>
+    </string-array>
+
+
+    <string name="map_key" translatable="false">AIzaSyDd5nOQTojh0vx4sJXolPUrYUqYl5hJhvk</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
